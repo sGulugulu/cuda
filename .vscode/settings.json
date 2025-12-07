@@ -1,0 +1,30 @@
+{
+    "files.encoding": "utf8",
+    "files.autoGuessEncoding": true,
+    "files.associations": {
+        "*.cu": "cpp",
+        "*.cuh": "cuda-cpp"
+    },
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.0/include",
+        "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um",
+        "C:/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/shared"
+    ],
+    "C_Cpp.default.compilerPath": "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.0/bin/nvcc.exe",
+    "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.cppStandard": "c++17",
+    "code-runner.runInTerminal": true,
+    "code-runner.preserveFocus": false,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.executorMap": {
+        "cu": "cd $dir; nvcc $fileName -o $fileNameWithoutExt.exe -I'C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.0\\include' && $dir$fileNameWithoutExt"
+    },
+    "C_Cpp.default.defines": [
+        "__CUDACC__"
+    ],
+    "[cuda-cpp]": {
+        "editor.defaultFormatter": "nvidia.nsight-vscode-edition"
+    },
+}

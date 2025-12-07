@@ -1,0 +1,10 @@
+^D:\..REPOSITORIES\CUDA\BUILD\CMAKEFILES\5B9C38E8CFA1CE0DFFCAA779D3DF6765\GENERATE.STAMP.RULE
+setlocal
+D:\..Repositories\Qt\Tools\CMake_64\bin\cmake.exe -SD:/..Repositories/cuda -BD:/..Repositories/cuda/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/..Repositories/cuda/build/hellocuda.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

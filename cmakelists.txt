@@ -1,0 +1,49 @@
+# cmake_minimum_required(VERSION 3.12)
+# project(hellocuda LANGUAGES CXX CUDA)
+# add_executable(hellocuda hellocuda.cu)
+
+
+cmake_minimum_required (VERSION 3.11)
+
+project (GcTorch LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# CUDA
+if (NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
+    set(CMAKE_CUDA_ARCHITECTURES 75)
+    message(STATUS "Using default CUDA ARCH 75 (Turing)")
+elseif(CMAKE_CUDA_ARCHITECTURES STREQUAL "native")
+    message(WARNING "Native CUDA ARCH detection requires NVIDIA GPU")
+endif()
+
+# check cuda toolkit is installed or not
+if(NOT CUDAToolkit_FOUND)
+    include(FindCUDAToolkit)
+endif()
+
+# include cuda toolkit's header files
+include_directories(${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES})
+
+# check cuda language is usable or not
+include(CheckLanguage)
+check_language(CUDA)
+
+if(CMAKE_CUDA_COMPILER)
+    enable_language(CUDA)
+    set(CMAKE_CUDA_STANDARD 17)
+    set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+else()
+    message(FATAL_ERROR "CUDA compiler not found.")
+endif()
+
+# using gdb
+set(CMAKE_BUILD_TYPE "Debug")
+
+if(${CMAKE_BUILD_TYPE} STREQUAL "RELEASE")
+    set(NVCC_FLAGS -O3 -Wno-deprecated-gpu-targets)
+    message(STATUS "${PROJECT_NAME} compile cuda code in release mode")
+else()
+    set(NVCC_FLAGS -G -Wno-deprecated-gpu-targets)
+    message(STATUS "${PROJECT_NAME} compile cuda code in debug mode")
+endif()
