@@ -16,7 +16,7 @@
     "C_Cpp.default.cStandard": "c11",
     "C_Cpp.default.cppStandard": "c++17",
     "code-runner.runInTerminal": true,
-    "code-runner.preserveFocus": false,
+    "code-runner.preserveFocus": true,
     "code-runner.clearPreviousOutput": true,
     "code-runner.executorMap": {
         "cu": "cd $dir; nvcc $fileName -o $fileNameWithoutExt.exe -I'C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.0\\include' && $dir$fileNameWithoutExt"
@@ -27,4 +27,6 @@
     "[cuda-cpp]": {
         "editor.defaultFormatter": "nvidia.nsight-vscode-edition"
     },
+    "sarif-viewer.connectToGithubCodeScanning": "off",
+    "C_Cpp.debugShortcut": false,
 }
